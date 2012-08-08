@@ -80,7 +80,7 @@ mocha@1.3.2 ./node_modules/mocha
 └── jade@0.26.3
 ```
 
-and you're ready to rock
+and you're ready to rock. we'll be using both mocha and should in our tests.
 
 ```bash
 MacBookPro-MWW:node_hands_on-unit_testing matt$ ls node_modules/
