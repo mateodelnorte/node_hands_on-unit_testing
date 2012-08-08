@@ -15,7 +15,7 @@ install-api:
 	cd ..;
 
 integration:
-	-export NODE_ENV=development; \
+	export NODE_ENV=development; \
 	./node_modules/mocha/bin/mocha -R spec ./test_integration/*.js;
 
 start: 
@@ -25,8 +25,8 @@ start:
 stop: 
 	-kill -9 `cat api.pid`; 
 
-test: ;@echo "testing ${PROJECT}"; \
-	-export NODE_ENV=development; \
+test: 
+	export NODE_ENV=development; \
 	./node_modules/mocha/bin/mocha -R spec;
 
 test_integration: start integration stop clean
