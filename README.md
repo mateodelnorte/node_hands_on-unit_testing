@@ -87,3 +87,47 @@ MacBookPro-MWW:node_hands_on-unit_testing matt$ ls node_modules/
 mocha  should
 ```
 
+So, what do we do with this thing?
+--------------
+
+We teeeeeeeeeeest
+
+1. Note Mocha assumes all your tests live under a ./test directory. Be sure to 'mkdir test' and place your test .js files here
+
+###simple: 
+
+Create a file called ./test/simple.js and place the following in it:
+
+```javascript
+require('should');
+describe('Array', function () {
+  var arr = [1,2,3];
+  describe('#indexOf()', function () {
+    it('should return -1 when the value is not present', function () {
+      arr.indexOf(5).should.equal(-1);
+      arr.indexOf(0).should.equal(-1);
+    });
+  });
+});
+```
+Next, run ```mocha```. You should see the following output: 
+
+```bash
+$ mocha
+
+  ....
+
+  ✔ 1 test complete (1ms)
+```
+
+###So, what did we just do?
+
+####describe
+
+mocha's describe method creates the function scope under which we're going to test some code. We're testing an Array. We're also testing the indexOf() function. 
+
+####Should
+
+should is a node module that extends Object and adds neat properties and methods to Object.prototype, allowing you to do interesting comparisons and assertions. It helps you test that values are what you want them to be (or not what you don't). To learn more about should, read the README (https://github.com/visionmedia/should.js/blob/master/Readme.md) or just look at the code directly and see how it works (https://github.com/visionmedia/should.js/blob/master/lib/should.js#L302).
+
+We just used it to perform two assertions inside of our describe blocks. When should methods fail a comparison, they throw an error. Had they thrown an error here, out test would have failed. 
