@@ -312,4 +312,5 @@ Dayum. That's nice.
 
 #Thanks!
 
- @MateoDelNorte
+ @MateoDelNorte on GitHub
+ @MattWalters5 on Twitter
