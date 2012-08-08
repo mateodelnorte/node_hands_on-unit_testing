@@ -279,6 +279,8 @@ export NODE_ENV=development; \
 $
 ```
 
+All you need to do is create a file called ```makefile``` (usually in your project's base folder) and put your build targets within it. (like here: https://github.com/mateodelnorte/node_hands_on-unit_testing/blob/master/makefile)
+
 One neat thing is that build targets (the names of the commands, you put to the left of the colon) can be chained and reused: 
 
 ```bash
@@ -301,3 +303,13 @@ test_all: test test_integration
 Calling ```make test_all```, above, will 1) run our unit tests 2) start our site 3) run our integration tests 4) stop the site and 5) perform and file cleanup the tests need to return us to a clean state.
 
 Dayum. That's nice. 
+
+##So, what have we covered?
+
+-We learned what the testing framework mocha is and how we can use it to test synchronous and asynchronous code, as well as APIs
+-We learned how to use mockrequire to allow us to unit test code that may have dependencies we aren't interested in testing
+-We learned how to use makefiles to encapsulate run and test routines to make our lives easier when doing all this dev stuff
+
+#Thanks!
+
+ @MateoDelNorte
