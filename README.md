@@ -1,4 +1,6 @@
-node_hands_on-unit_testing
+Node Hands On! 
+==========================
+##Unit Testing with Mocha, MockRequire, and Make
 ==========================
 
 What we're gonna do: 
@@ -8,6 +10,7 @@ What we're gonna do:
 - Learn what MockRequire is
 - Learn how to get MockRequire
 - Learn how to use MockRequire with Mocha
+- Learn how to make it all easier with... make
 
 What is Mocha?
 --------------
@@ -226,3 +229,75 @@ describe('our_little_api', function () {
 
 ###```Make```ing Life Easier
 
+Make was created in 1977 for Bell Labs as a general software build tool. It's 35 years old. Know what that means?
+
+It works. 
+
+Make allows us to write simple build targets (bash or other command line statements), like the following: 
+
+```make
+test: ;@echo "testing ${PROJECT}"; \
+  -export NODE_ENV=development; \
+	./node_modules/mocha/bin/mocha -R spec
+```
+
+that we can run from the command line like the following:
+
+```make test```
+
+and stuff just runs: 
+
+```bash
+$ make test
+export NODE_ENV=development; \
+  ./node_modules/mocha/bin/mocha -R spec;
+
+
+  somethingInteresting
+    #funkytion
+      ✓ should return the value from the dependency 
+
+  somethingInteresting
+    #funkytion
+      ✓ should return what we say, and *like* it! 
+
+  Array
+    #indexOf()
+      ✓ should return -1 when the value is not present 
+
+  User
+    #save()
+      ✓ should save without error 
+
+  User
+    #save()
+      ✓ should save without error 
+
+
+  ✔ 5 tests complete (4ms)
+  
+$
+```
+
+One neat thing is that build targets (the names of the commands, you put to the left of the colon) can be chained and reused: 
+
+```bash
+start: 
+  @echo "starting API"; \
+	node ./our_little_api/app.js & echo "$$!" > api.pid; \
+
+stop: 
+	-kill -9 `cat api.pid`; 
+
+test: 
+  export NODE_ENV=development; \
+	./node_modules/mocha/bin/mocha -R spec;
+
+test_integration: start integration stop clean
+
+test_all: test test_integration
+```
+
+Calling ```make test_all```, above, will 1) run our unit tests 2) start our site 3) run our integration tests 4) stop the site and 5) perform and file cleanup the tests need to return us to a clean state.
+
+Dayum. That's nice. 
