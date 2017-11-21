@@ -15,7 +15,7 @@ What we're gonna do:
 What is Mocha?
 --------------
 
-From http://visionmedia.github.com/mocha/ :
+From http://mochajs.org/ :
 
 Mocha is a feature-rich JavaScript test framework running on node and the browser, making asynchronous testing simple and fun. Mocha tests run serially, allowing for flexible and accurate reporting, while mapping uncaught exceptions to the correct test cases
 
